@@ -14,8 +14,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>8</maven.compiler.source>
+    <maven.compiler.target>8</maven.compiler.target>
   </properties>
 
   <dependencies>
@@ -24,6 +24,12 @@
       <artifactId>junit</artifactId>
       <version>4.11</version>
       <scope>test</scope>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/io.tarantool/cartridge-driver -->
+    <dependency>
+        <groupId>io.tarantool</groupId>
+        <artifactId>cartridge-driver</artifactId>
+        <version>0.13.0</version>
     </dependency>
   </dependencies>
 
@@ -68,6 +74,14 @@
         <plugin>
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>exec-maven-plugin</artifactId>
+          <version>1.4.0</version>
+          <configuration>
+            <mainClass>liquibase.ext.tarantool.database.TarantoolClientDriver</mainClass>
+          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>
